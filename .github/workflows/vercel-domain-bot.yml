@@ -68,10 +68,7 @@ jobs:
             echo "::error::PROJECT_B_ID secret is not set"
             exit 1
           fi
-          if [ -z "$NEW_DOMAIN" ]; then
-            echo "::error::NEW_DOMAIN secret is not set"
-            exit 1
-          fi
+          # NEW_DOMAIN is optional - will auto-generate if not set
           if [ -z "$ENV_VAR_KEY" ]; then
             echo "::error::ENV_VAR_KEY secret is not set"
             exit 1
