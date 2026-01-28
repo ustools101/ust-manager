@@ -4,6 +4,8 @@ interface TelegramWebhookResponse {
   description: string;
 }
 
+
+
 export class TelegramWebhookManager {
   private readonly botToken: string;
 
