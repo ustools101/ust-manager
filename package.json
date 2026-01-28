@@ -1,0 +1,27 @@
+{
+  "name": "vercel-domain-bot",
+  "version": "1.0.0",
+  "description": "Automated Vercel domain rotation and environment variable management bot",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "start:local": "node -r dotenv/config dist/index.js"
+  },
+  "keywords": [
+    "vercel",
+    "automation",
+    "domain",
+    "devops"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "dotenv": "^17.2.3",
+    "typescript": "^5.3.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
