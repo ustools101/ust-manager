@@ -52,7 +52,7 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           WEBHOOK_WAIT_SECONDS: ${{ secrets.WEBHOOK_WAIT_SECONDS }}
         run: |
-          # Validate required secrets are set (without exposing values)
+          echo "[bot] Validating required secrets..."
           if [ -z "$PROJECT_A_TOKEN" ]; then
             echo "::error::PROJECT_A_TOKEN secret is not set"
             exit 1
@@ -69,8 +69,11 @@ jobs:
             echo "::error::PROJECT_B_ID secret is not set"
             exit 1
           fi
-          
-          # Run the bot
+          if [ -z "$ENV_VAR_KEY" ]; then
+            echo "::error::ENV_VAR_KEY secret is not set"
+            exit 1
+          fi
+          echo "[bot] All required secrets present. NEW_DOMAIN=${NEW_DOMAIN:-(auto-generate)}"
           npm start
 
       - name: Summary
