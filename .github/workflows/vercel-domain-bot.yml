@@ -1,11 +1,6 @@
 name: Vercel Domain Rotation Bot
 
 on:
-  schedule:
-    # Runs 4 times daily: 12 AM, 6 AM, 12 PM, 6 PM (UTC+1)
-    # Converted to UTC: 11 PM, 5 AM, 11 AM, 5 PM
-    - cron: '0 23,5,11,17 * * *'
-  
   workflow_dispatch:
     inputs:
       new_domain:
@@ -15,6 +10,12 @@ on:
 
 env:
   NODE_VERSION: '20'
+
+# Prevent two rotations running concurrently — if a second trigger arrives
+# while one is already running, it is cancelled immediately.
+concurrency:
+  group: domain-rotation
+  cancel-in-progress: true
 
 jobs:
   rotate-domain:
